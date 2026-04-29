@@ -1,0 +1,19 @@
+flowchart TD
+    W[Webhook from Evolution] --> M[Extract Message]
+    M --> F{fromMe?}
+
+    F -- yes --> P[Pause Bot 5h]
+    F -- no --> T{Text or Audio?}
+
+    T -- Audio --> STT[Whisper STT]
+    STT --> TXT[Text]
+
+    T -- Text --> TXT
+    TXT --> U[Get or Create User]
+    U --> H[Fetch 24h History]
+    H --> C[Check bot_control]
+
+    C --> R[Business Rules]
+    R --> AI[AI Agent Sofía]
+    AI --> SEND[Send WhatsApp Reply]
+    SEND --> LOG[Save History]

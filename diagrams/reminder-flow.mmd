@@ -1,0 +1,8 @@
+flowchart TD
+    S[Hourly Scheduler] --> Q[Query Appointments<br/>23–25h]
+    Q --> L{notif_24h = false?}
+
+    L -- yes --> M[Send WhatsApp Reminder]
+    M --> U[Update notif_24h = true]
+
+    L -- no --> END[Skip]

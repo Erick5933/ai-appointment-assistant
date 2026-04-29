@@ -1,0 +1,11 @@
+flowchart LR
+    U[Patient / Staff<br/>WhatsApp] --> E[Evolution API]
+    E --> N[n8n Webhook]
+
+    N --> A[AI Agent<br/>Sofía]
+    A -->|Tools| G[Google Calendar]
+    A -->|DB| S[Supabase]
+
+    G --> A
+    S --> A
+    A --> E

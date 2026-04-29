@@ -1,0 +1,15 @@
+flowchart TD
+    USERS["USERS<br/>- id (PK)<br/>- display_name<br/>- name<br/>- email<br/>- created_at"]
+
+    HISTORY["HISTORY<br/>- id (PK)<br/>- user_id (FK)<br/>- role<br/>- content<br/>- created_at"]
+
+    WORKING_MEMORY["WORKING_MEMORY<br/>- id (PK)<br/>- user_id (FK, unique)<br/>- summary<br/>- key_points<br/>- generated_at"]
+
+    APPOINTMENTS["APPOINTMENTS<br/>- id (PK)<br/>- user_id (FK)<br/>- date_start<br/>- date_end<br/>- description<br/>- google_event_id (unique)<br/>- status<br/>- notif_24h<br/>- notif_2h<br/>- created_at"]
+
+    BOT_CONTROL["BOT_CONTROL<br/>- user_id (PK, FK)<br/>- disabled_until<br/>- debounce_until<br/>- last_message_id<br/>- reason<br/>- created_at"]
+
+    USERS -->|1:N| HISTORY
+    USERS -->|1:1| WORKING_MEMORY
+    USERS -->|1:N| APPOINTMENTS
+    USERS -->|1:1| BOT_CONTROL

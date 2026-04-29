@@ -1,0 +1,6 @@
+flowchart TD
+    U[User Message] --> D[Detect Stop Phrase]
+    D --> P[Pause Bot]
+    P --> N[Notify Clinic]
+    N --> W[Wait for Manual Reply]
+    W --> R[Resume after timeout]
